@@ -49,7 +49,6 @@ export class AddEmployeeComponent implements OnInit {
     reader.readAsDataURL(this.fileData);
     reader.onload = (_event) => {
       this.previewUrl = reader.result;
-      console.log("AddEmployeeComponent -> reader.onload -> this.previewUrl", this.previewUrl)
     }
   }
 
@@ -65,7 +64,6 @@ export class AddEmployeeComponent implements OnInit {
       file:  this.previewUrl 
 
     };
-    console.log("AddEmployeeComponent -> saveEmployee -> data", data)
 
     this.employeeService.create(data)
       .subscribe(
