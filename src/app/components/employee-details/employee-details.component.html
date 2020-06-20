@@ -1,0 +1,85 @@
+<div *ngIf="currentEmployee" class="edit-form">
+  <h4>Employee Edit Form</h4>
+  <label class="hoverable" for="fileInput">
+    <img [src]="currentEmployee.profilePic"  onerror="this.src='https://www.w3schools.com/howto/img_avatar.png';" alt="">
+    <div class="background"></div>
+  </label>
+  <br/>
+  <input id="fileInput" type='file' (change)="onSelectFile($event)">
+  <button *ngIf="url" (click)="delete()" >delete</button>
+  <form>
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="firstName"
+        [(ngModel)]="currentEmployee.firstName"
+        name="firstName"
+      />
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lastName"
+        [(ngModel)]="currentEmployee.lastName"
+        name="lastName"
+      />
+    </div>
+    <div class="form-group">
+      <label for="emplopyeeName">Employee Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="emplopyeeName"
+        [(ngModel)]="currentEmployee.employeeName"
+        name="emplopyeeName"
+      />
+    </div>    
+    <div class="form-group">
+      <label for="doj">DOJ</label>
+      <input
+        type="text"
+        class="form-control"
+        id="doj"
+        [(ngModel)]="currentEmployee.doj"
+        name="doj"
+      />
+    </div>
+    <div class="form-group">
+      <label for="dob">DOB</label>
+      <input
+        type="text"
+        class="form-control"
+        id="dob"
+        [(ngModel)]="currentEmployee.dob"
+        name="dob"
+      />
+    </div>
+    <div class="form-group">
+      <label for="age">AGE</label>
+      <input
+        type="text"
+        class="form-control"
+        id="age"
+        [(ngModel)]="currentEmployee.age"
+        name="age"
+      />
+    </div>
+  </form>
+  <button class="btn btn-danger mr-2" (click)="deleteEmployee()">
+    Delete
+  </button>
+
+  <button type="submit" class="btn btn-success" (click)="updateEmployee()">
+    Update
+  </button>
+  <p>{{ message }}</p>
+</div>
+
+<div *ngIf="!currentEmployee">
+  <br />
+  <p>Cannot access this Employee...</p>
+</div>

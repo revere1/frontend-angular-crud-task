@@ -1,0 +1,57 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Search by Name" [(ngModel)]="employeeName" />
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" (click)="searchName()">
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="text-center"> Employee Details</h2>
+          <button class="btn btn-success text-right" (click)="addUser()"> Add Employee</button>
+            <table datatable class="table table-striped" >
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Profile Image</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Employee Name</th>
+                <th>Employee Age</th>
+                <th>Employee DOJ</th>
+                <th>Employee DOB</th>
+                <th>Delete</th>
+                <th>Edit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let emp of pageOfItems">
+
+                <td>{{emp.employeeId}}</td>
+                <td><img [src]="emp.profilePic" onerror="this.src='https://www.w3schools.com/howto/img_avatar.png';" width="80"/></td>
+                <td>{{emp.firstName}}</td>
+                <td>{{emp.lastName}}</td>
+                <td>{{emp.employeeName}}</td>
+                <td>{{emp.age}}</td>
+                <td>{{emp.doj}}</td>
+                <td>{{emp.dob}}</td>
+                <td><button class="btn btn-danger" (click)="deleteempdetails(emp)"> Delete</button></td>
+                <td> <button class="btn btn-success" routerLink="/employee/{{ emp.employeeId }}" style="margin-left: 20px;">
+                    Edit</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="card-footer pb-0 pt-3">
+            <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

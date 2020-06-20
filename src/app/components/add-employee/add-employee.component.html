@@ -1,0 +1,56 @@
+<div class="submit-form">
+  <div *ngIf="!submitted">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h3>Choose File</h3>
+          <div class="form-group">
+            <input type="file" name="image" (change)="fileProgress($event)" />
+          </div>
+          <div *ngIf="fileUploadProgress">
+            Upload progress: {{ fileUploadProgress }}
+          </div>
+          <div class="image-preview mb-3" *ngIf="previewUrl">
+            <img [src]="previewUrl" height="300" />
+          </div>
+
+          <div class="mb-3" *ngIf="uploadedFilePath">
+            {{uploadedFilePath}}
+          </div>
+        </div>
+      </div>
+
+      <label for="title">First Name</label>
+      <input type="text" class="form-control" id="firstName" required [(ngModel)]="employee.firstName"
+        name="firstName" />
+    </div>
+    <div class="form-group">
+      <label for="title">Last Name</label>
+      <input type="text" class="form-control" id="lastName" required [(ngModel)]="employee.lastName" name="lastName" />
+    </div>
+    <div class="form-group">
+      <label for="title">Employee Name</label>
+      <input type="text" class="form-control" id="employeeName" required [(ngModel)]="employee.employeeName"
+        name="employeeName" />
+    </div>
+    <div class="form-group">
+      <label for="title">DOJ</label>
+      <input type="date" class="form-control" id="doj" [(ngModel)]="employee.doj" name="doj"
+        [ngModel]="employee.doj | date:'yyyy-MM-dd'">
+    </div>
+    <div class="form-group">
+      <label for="title">DOB</label>
+      <input type="date" class="form-control" id="doj" [(ngModel)]="employee.dob" name="dob"
+        [ngModel]="employee.dob | date:'yyyy-MM-dd'">
+    </div>
+    <div class="form-group">
+      <label for="title">AGE</label>
+      <input type="text" class="form-control" id="age" required [(ngModel)]="employee.age" name="age" />
+    </div>
+    <button (click)="saveEmployee()" class="btn btn-success">Submit</button>
+  </div>
+  <div *ngIf="submitted">
+    <h4>You submitted successfully!</h4>
+    <button class="btn btn-success" (click)="newEmployee()">Add</button>
+  </div>
+</div>
