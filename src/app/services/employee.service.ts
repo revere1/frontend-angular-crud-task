@@ -35,7 +35,7 @@ export class EmployeeService {
     return this.http.delete(baseUrl);
   }
 
-  findByTitle(title) {
-    return this.http.get(`${baseUrl}?title=${title}`);
+  findByName(empName) {
+    return this.http.get(`${baseUrl}/search?employeeName=${empName}`);
   }
 }

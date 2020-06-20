@@ -49,10 +49,11 @@ export class EmployeesListComponent implements OnInit {
   }
 
   searchName() {
-    this.employeeService.findByTitle(this.employeeName)
+    this.employeeService.findByName(this.employeeName)
       .subscribe(
         data => {
           this.employees = data;
+          this.items = this.employees;
           console.log(data);
         },
         error => {
